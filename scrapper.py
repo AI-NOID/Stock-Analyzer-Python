@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+
 import time
 import pandas as pd
 from aux_functions import *
@@ -12,7 +14,7 @@ def get_stock_basic_data(ticker):
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
 
-    browser = webdriver.Chrome("chromedriver.exe")
+    browser = webdriver.Chrome(options=options)
     browser.get(url)
     time.sleep(2)
 
