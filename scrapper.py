@@ -12,7 +12,7 @@ def get_stock_basic_data(ticker):
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
 
-    browser = webdriver.Chrome(options=options)
+    browser = webdriver.Chrome("chromedriver.exe")
     browser.get(url)
     time.sleep(2)
 
