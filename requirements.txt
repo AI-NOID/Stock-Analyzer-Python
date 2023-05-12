@@ -16,4 +16,5 @@ yfinance==0.1.70
 protobuf==3.20.0
 chromedriver-binary
 webdriver-manager
+chromedriver-py
 
