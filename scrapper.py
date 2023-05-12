@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
 # import chromedriver_binary
 
 import time
@@ -14,8 +15,11 @@ def get_stock_basic_data(ticker):
     options.add_argument('--headless')
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
-
-    browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
+    try:
+        browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
+    except:
+        browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    
     browser.get(url)
     time.sleep(2)
 
