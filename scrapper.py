@@ -16,8 +16,14 @@ def get_stock_basic_data(ticker):
     options.add_argument('--headless')
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    prefs = {"profile.managed_default_content_settings.images":2}
+    options.headless = True
+    options.add_experimental_option("prefs", prefs)
+    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     #browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
-    browser = webdriver.Chrome(service=Service(binary_path), options=options)
+    #browser = webdriver.Chrome(service=Service(binary_path), options=options)
     #browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     
     browser.get(url)
